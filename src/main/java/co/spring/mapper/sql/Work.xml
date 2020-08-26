@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.spring.mapper.WorkMapper">
+    
+    <select id="GetAllWorkName" resultMap="result">
+        SELECT * FROM WORKTABLE;
+    </select>
+    <select id="GetWorkNameById" parameterType="int" resultType="string" >
+        SELECT WorkName FROM WORKTABLE WHERE WorkId = #{workId};
+    </select>
+    
+    <delete id="deleteWorkById" parameterType="int">
+        DELETE from WORKTABLE WHERE WorkId = #{workId};
+    </delete>
+    
+    <update id="updateWork" parameterType="WorkModel">
+        UPDATE WORKTABLE SET WorkName = #{WorkName}, StartDate = #{StartDate}, EndDate = #{EndDate}, WorkStatus = #{Status} WHERE WorkId = #{workId};
+    </update>
+    
+    <insert id="AddWorkName" parameterType="WorkModel" >
+        INSERT INTO WORKTABLE (WorkName, StartDate, EndDate, WorkStatus) VALUES (#{WorkName}, #{StartDate}, #{EndDate}, #{Status});
+    </insert>
+    
+    <select id="SortWorkName" resultMap="result">
+        SELECT * FROM WORKTABLE
+        <if test="columnName != null">
+            ORDER BY #{columnName}
+        </if>
+        <if test="asc != true">
+            DESC
+        </if>
+    </select>
+    
+	<select id="PagingWorkName" resultMap="result" parameterType="int">
+        SELECT * FROM WORKTABLE
+         LIMIT #{totalRecord}
+    </select>
+    
+    <resultMap id = "result" type = "WorkModel">
+       <result property = "WorkId" column = "WorkId"/>
+       <result property = "WorkName" column = "WorkName"/>
+       <result property = "StartDate" column = "StartDate"/>
+       <result property = "EndDate" column = "EndDate"/>
+       <result property = "Status" column = "WorkStatus"/>
+    </resultMap>
+</mapper>
