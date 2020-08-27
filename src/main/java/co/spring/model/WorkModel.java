@@ -81,5 +81,15 @@ public class WorkModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public WorkModel(int workId, String workName, Date startDate, Date endDate, int status, String statusDisplay) {
+		super();
+		WorkId = workId;
+		WorkName = workName;
+		StartDate = startDate;
+		EndDate = endDate;
+		Status = status;
+		StatusDisplay = statusDisplay;
+	}
 	
 }

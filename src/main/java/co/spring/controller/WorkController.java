@@ -31,7 +31,7 @@ public class WorkController {
 			method = RequestMethod.GET, 
             produces = { MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<WorkModel>> GetAllWorkName() {
-		return new ResponseEntity<>(workNameService.GetAllWorkName(), HttpStatus.OK);
+		return new ResponseEntity<>(workNameService.GetAllWork(), HttpStatus.OK);
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class WorkController {
 			method = RequestMethod.GET, 
 		    produces = { MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<String> GetWorkName(@PathVariable("id") int id) {
-		return new ResponseEntity<>(workNameService.GetWorkName(id), HttpStatus.OK);
+		return new ResponseEntity<>(workNameService.GetWorkById(id), HttpStatus.OK);
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class WorkController {
             produces = { MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
 	public ResponseEntity<?> AddWorkName(@RequestBody WorkModel work) {
-		if (workNameService.AddWorkName(work)) {
+		if (workNameService.AddWork(work)) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -70,7 +70,7 @@ public class WorkController {
             produces = { MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
 	public ResponseEntity<?> UpdateWorkName(@RequestBody WorkModel work) {
-		if (workNameService.updateWork(work) != null) {
+		if (workNameService.UpdateWork(work) != null) {
 			return new ResponseEntity<>(work, HttpStatus.OK);
 		}
 		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -85,7 +85,7 @@ public class WorkController {
             produces = { MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
 	public ResponseEntity<?> DeleteWorkName(@PathVariable("id") int id) {
-		if (workNameService.deleteWorkById(id) > 0) {
+		if (workNameService.DeleteWorkById(id) > 0) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);

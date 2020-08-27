@@ -18,7 +18,7 @@ public interface WorkService {
 	 * Get all work name
 	 * @return List<String>
 	 */
-	List<WorkModel> GetAllWorkName();
+	List<WorkModel> GetAllWork();
 	
 
 	/**
@@ -27,7 +27,7 @@ public interface WorkService {
 	 * @param id string
 	 * @return string
 	 */
-	String GetWorkName(int id);
+	String GetWorkById(int id);
 	
 	/**
 	 * Add new work name
@@ -35,14 +35,14 @@ public interface WorkService {
 	 * @param workName WorkNameModel
 	 * @return boolean
 	 */
-	boolean AddWorkName(WorkModel workName);
+	boolean AddWork(WorkModel workName);
 	
 	/**
 	 * Update current work
 	 * @param work
 	 * @return
 	 */
-	public WorkModel updateWork(WorkModel work);
+	public WorkModel UpdateWork(WorkModel work);
 
 	
 	/**
@@ -50,7 +50,7 @@ public interface WorkService {
 	 * @param workId
 	 * @return
 	 */
-	public int deleteWorkById(int workId);
+	public int DeleteWorkById(int workId);
 	
 	/**
 	 * Get all work name with sorting

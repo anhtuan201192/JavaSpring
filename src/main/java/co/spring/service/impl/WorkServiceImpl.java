@@ -20,7 +20,7 @@ public class WorkServiceImpl implements WorkService{
 	 * @return List<String>
 	 */
 	@Override
-	public List<WorkModel> GetAllWorkName() {
+	public List<WorkModel> GetAllWork() {
 		
 		return workMapper.GetAllWorkName();
 	}
@@ -32,7 +32,7 @@ public class WorkServiceImpl implements WorkService{
 	 * @return string
 	 */
 	@Override
-	public String GetWorkName(int id) {
+	public String GetWorkById(int id) {
 		return workMapper.GetWorkNameById(id);
 	}
 
@@ -43,7 +43,7 @@ public class WorkServiceImpl implements WorkService{
 	 * @return boolean
 	 */
 	@Override
-	public boolean AddWorkName(WorkModel workModel) {
+	public boolean AddWork(WorkModel workModel) {
 		return workMapper.AddWorkName(workModel);
 	}
 	
@@ -53,7 +53,7 @@ public class WorkServiceImpl implements WorkService{
 	 * @return
 	 */
 	@Override
-	public WorkModel updateWork(WorkModel work) {
+	public WorkModel UpdateWork(WorkModel work) {
 		int result = workMapper.updateWork(work);
 		if (result < 1) {
 			return null;
@@ -67,7 +67,7 @@ public class WorkServiceImpl implements WorkService{
 	 * @return
 	 */
 	@Override
-	public int deleteWorkById(int workId) {
+	public int DeleteWorkById(int workId) {
 		return workMapper.deleteWorkById(workId);
 	}
 
